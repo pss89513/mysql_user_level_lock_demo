@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 50
+      max-lifetime: 60000
+      jdbc-url: jdbc:mysql://localhost/user_lock
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      connection-timeout: 5000
+
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_batch_fetch_size: 16
+        format_sql: true
+    open-in-view: false
+
+
+#logging:
+#  level:
+#    org.hibernate:
+#      SQL: debug
+#      tool.hbm2ddl: debug
+#      type: trace
+#      stat: debug
+#      type.BasicTypeRegistry: warn
+#    org.springframework.jdbc: DEBUG

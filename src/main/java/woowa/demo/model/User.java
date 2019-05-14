@@ -17,7 +17,8 @@ import java.util.Set;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 
-    public static final int MAXIMUM_CARD_COUNT = 2;
+    private static final int MAXIMUM_CARD_COUNT = 2;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

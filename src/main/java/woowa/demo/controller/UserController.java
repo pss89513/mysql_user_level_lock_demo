@@ -31,11 +31,17 @@ public class UserController {
         this.userLevelLockFinal = userLevelLockFinal;
     }
 
+    /**
+     * USER LEVEL LOCK 사용 하지 않는다.
+     */
     @PostMapping("/{userId}/add-new-card")
     public int addNewCard(@PathVariable Long userId) {
         return userService.addNewCard(userId);
     }
 
+    /**
+     * JdbcTemplate 으로 구현한 버전 사용.
+     */
     @PostMapping("/{userId}/add-new-card-with-template")
     public int addNewCardWithTemplate(@PathVariable Long userId) {
         return userLevelLockWithJdbcTemplate.executeWithLock(
@@ -45,6 +51,9 @@ public class UserController {
         );
     }
 
+    /**
+     * 최종 버전 사용.
+     */
     @PostMapping("/{userId}/add-new-card-final")
     public int addNewCardFinal(@PathVariable Long userId) {
         return userLevelLockFinal.executeWithLock(

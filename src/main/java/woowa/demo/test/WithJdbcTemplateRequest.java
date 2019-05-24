@@ -3,6 +3,9 @@ package woowa.demo.test;
 import woowa.demo.controller.UserController;
 import woowa.demo.util.RequestUtil;
 
+/**
+ * JdbcTemplate 을 이용한 UserLevelLock 호출
+ */
 public class WithJdbcTemplateRequest {
 
     private static final int THREAD_COUNT = 40;

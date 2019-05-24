@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import woowa.demo.controller.UserController;
 import woowa.demo.util.RequestUtil;
 
+/**
+ * 동시에 등록 요청
+ */
 @Slf4j
 public class MultiThreadRequest {
 

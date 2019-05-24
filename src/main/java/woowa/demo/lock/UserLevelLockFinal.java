@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.function.Supplier;
 
+/**
+ * DataSource 에서 직접 Connection 을 얻어 USER LEVEL LOCK 을 사용하는 클래스
+ */
 @Slf4j
 public class UserLevelLockFinal {
     

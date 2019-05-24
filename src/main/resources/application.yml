@@ -19,6 +19,7 @@ spring:
         format_sql: true
     open-in-view: false
 
+# 예제 실행시 쿼리 확인 하려면 아래 주석 해제해주세요.
 
 #logging:
 #  level:

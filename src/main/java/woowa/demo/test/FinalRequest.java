@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import woowa.demo.controller.UserController;
 import woowa.demo.util.RequestUtil;
 
+/**
+ * 최종 버전 UserLevelLock 호출
+ */
 @Slf4j
 public class FinalRequest {
 

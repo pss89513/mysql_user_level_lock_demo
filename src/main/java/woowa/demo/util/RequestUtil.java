@@ -27,6 +27,9 @@ public class RequestUtil {
         return REST_TEMPLATE.postForObject(uri, null, Integer.class, uriVariables);
     }
 
+    /**
+     * post 로 동시 요청한다.
+     */
     public static void concurrentPost(int threadCount,
                                       String uri,
                                       Object... uriVariables) {

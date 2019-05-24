@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+/**
+ * JdbcTemplate 을 이용하여 USER LEVEL LOCK 을 사용하는 클래스
+ */
 @Slf4j
 @Service
 public class UserLevelLockWithJdbcTemplate {

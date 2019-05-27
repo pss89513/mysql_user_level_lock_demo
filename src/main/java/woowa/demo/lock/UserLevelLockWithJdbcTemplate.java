@@ -2,8 +2,8 @@ package woowa.demo.lock;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -24,7 +24,7 @@ public class UserLevelLockWithJdbcTemplate {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // @Transactional
+//    @Transactional
     public <T> T executeWithLock(String userLockName,
                                  int timeoutSeconds,
                                  Supplier<T> supplier) {

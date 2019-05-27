@@ -2,6 +2,7 @@ package woowa.demo.test;
 
 import lombok.extern.slf4j.Slf4j;
 import woowa.demo.controller.UserController;
+import woowa.demo.model.User;
 import woowa.demo.util.RequestUtil;
 
 /**
@@ -11,9 +12,12 @@ import woowa.demo.util.RequestUtil;
 public class SingleThreadRequest {
 
     public static void main(String[] args) {
-        Integer count = RequestUtil.post(UserController.ADD_CARD_URI, 1L);
-        if (count != null) {
-            log.info("count : {}", count);
+        for (int i = 0; i <= User.MAXIMUM_CARD_COUNT; i++) {
+            log.info("{} 번째 요청!!", i + 1);
+            Integer count = RequestUtil.post(UserController.ADD_CARD_URI, 1L);
+            if (count != null) {
+                log.info("response count : {}\n", count);
+            }
         }
     }
 

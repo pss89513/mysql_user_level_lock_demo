@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RequestUtil {
 
-    private static final int SLEEP_BOUND = 200;
     private static final RestTemplate REST_TEMPLATE = create();
 
     public static Integer post(String uri,
@@ -40,10 +39,9 @@ public class RequestUtil {
             new Thread(() -> {
                 try {
                     barrier.await();
-                    TimeUnit.MILLISECONDS.sleep(random.nextInt(SLEEP_BOUND));
                     Integer count = post(uri, uriVariables);
                     if (count != null) {
-                        log.info("count : {}", count);
+                        log.info("response count : {}", count);
                     }
                 } catch (Exception e) {
                     throw new RuntimeException(e);

@@ -8,7 +8,7 @@ import woowa.demo.util.RequestUtil;
  */
 public class WithJdbcTemplateRequest {
 
-    private static final int THREAD_COUNT = 1;
+    private static final int THREAD_COUNT = 20;
 
     public static void main(String[] args) {
         RequestUtil.concurrentPost(THREAD_COUNT, UserController.ADD_CARD_URI_WITH_TEMPLATE, 1L);

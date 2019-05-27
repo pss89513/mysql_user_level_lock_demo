@@ -7,7 +7,10 @@ import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import woowa.demo.lock.UserLevelLockFinal;
+import woowa.demo.lock.UserLevelLockWithJdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -18,9 +21,16 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
+    @Primary
     @Bean
     @ConfigurationProperties("spring.datasource.hikari")
     public HikariDataSource dataSource() {
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
+
+    @Bean
+    @ConfigurationProperties("userlock.datasource.hikari")
+    public HikariDataSource userLockDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
@@ -34,7 +44,12 @@ public class DemoApplication {
     }
 
     @Bean
-    public UserLevelLockFinal userLevelLockFinal(DataSource dataSource) {
-        return new UserLevelLockFinal(dataSource);
+    public UserLevelLockWithJdbcTemplate userLevelLockWithJdbcTemplate() {
+        return new UserLevelLockWithJdbcTemplate(new NamedParameterJdbcTemplate(userLockDataSource()));
+    }
+
+    @Bean
+    public UserLevelLockFinal userLevelLockFinal() {
+        return new UserLevelLockFinal(userLockDataSource());
     }
 }

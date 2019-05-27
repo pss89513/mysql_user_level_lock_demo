@@ -12,7 +12,6 @@ import java.util.function.Supplier;
  * JdbcTemplate 을 이용하여 USER LEVEL LOCK 을 사용하는 클래스
  */
 @Slf4j
-@Service
 public class UserLevelLockWithJdbcTemplate {
 
     private static final String GET_LOCK = "SELECT GET_LOCK(:userLockName, :timeoutSeconds)";
@@ -46,7 +45,6 @@ public class UserLevelLockWithJdbcTemplate {
         params.put("timeoutSeconds", timeoutSeconds);
 
         log.info("GetLock!! userLockName : [{}], timeoutSeconds : [{}]", userLockName, timeoutSeconds);
-
         Integer result = jdbcTemplate.queryForObject(GET_LOCK, params, Integer.class);
         checkResult(result, userLockName, "GetLock");
     }

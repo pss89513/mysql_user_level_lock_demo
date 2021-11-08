@@ -1,4 +1,10 @@
-# MySQL을 이용한 분산락으로 여러 서버에 걸친 동시성 관리 예제코드
+# MySQL을 이용한 분산락으로 여러 서버에 걸친 동시성 관리 예제코드(redis도 해보자)
+
+### Redis 설치
+
+```
+docker run --name redis -d -p 6379:6379 redis
+```
 
 ### MySQL 설치
 [Docker](https://www.docker.com/) 설치 후

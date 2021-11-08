@@ -5,7 +5,7 @@ spring:
       max-lifetime: 60000
       jdbc-url: jdbc:mysql://localhost/user_lock
       username: root
-      password: root
+      password: passw0rd
       driver-class-name: com.mysql.cj.jdbc.Driver
       connection-timeout: 5000
       pool-name: Spring-HikariPool
@@ -18,6 +18,11 @@ spring:
         format_sql: true
     open-in-view: false
 
+  redis:
+    host: localhost
+    port: 6379
+
+
 userlock:
   datasource:
     hikari:
@@ -25,7 +30,7 @@ userlock:
       max-lifetime: 60000
       jdbc-url: jdbc:mysql://localhost/user_lock
       username: root
-      password: root
+      password: passw0rd
       driver-class-name: com.mysql.cj.jdbc.Driver
       connection-timeout: 5000
       pool-name: UserLock-HikariPool

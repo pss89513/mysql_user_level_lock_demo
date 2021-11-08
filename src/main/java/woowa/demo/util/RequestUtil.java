@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.util.StopWatch;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
@@ -39,10 +40,14 @@ public class RequestUtil {
             new Thread(() -> {
                 try {
                     barrier.await();
+                    StopWatch sw = new StopWatch();
+                    sw.start();
                     Integer count = post(uri, uriVariables);
-                    if (count != null) {
-                        log.info("response count : {}", count);
-                    }
+//                    if (count != null) {
+//                        log.info("response count : {}", count);
+//                    }
+                    sw.stop();
+                    log.info("걸린 시간(ms): {}", sw.getTotalTimeMillis());
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -64,7 +69,7 @@ public class RequestUtil {
         @Override
         public void handleError(ClientHttpResponse response) throws IOException {
             String message = StreamUtils.copyToString(response.getBody(), Charset.forName("UTF-8"));
-            log.error(message);
+//            log.error(message);
         }
 
     }

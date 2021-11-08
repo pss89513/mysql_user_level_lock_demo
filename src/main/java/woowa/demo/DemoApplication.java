@@ -1,6 +1,8 @@
 package woowa.demo;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import woowa.demo.lock.UserLevelLockFinal;
 import woowa.demo.lock.UserLevelLockWithJdbcTemplate;
+import woowa.demo.lock.UserLevelLockWithRedis;
 
 import javax.sql.DataSource;
 
